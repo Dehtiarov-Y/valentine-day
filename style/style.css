@@ -4,15 +4,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("valentine-day/img/heart-bg.jpg");
+    background-image: url("../img/heart-bg.jpg");
     font-family: "Pixelify Sans", sans-serif;
-    cursor: url("valentine-day/img/cursor-normal.png"), pointer;
+    cursor: url("../img/cursor-normal.png"), pointer;
 }
 
 /* Envelope Screen */
 #envelope-container {
     text-align: center;
-    cursor: url("valentine-day/img/cursor-pointer.png"), pointer;
+    cursor: url("../img/cursor-pointer.png"), pointer;
 
 }
 
@@ -51,7 +51,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url("valentine-day/img/window.png");
+    background-image: url("../img/window.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -104,7 +104,7 @@ p {
 
 .btn {
     width: 120px;
-    cursor: url("valentine-day/img/cursor-pointer.png"), pointer;
+    cursor: url("../img/cursor-pointer.png"), pointer;
     user-select: none;
 }
 
