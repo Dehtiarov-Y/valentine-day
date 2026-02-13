@@ -51,7 +51,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url("/img/window.png");
+    background-image: url("img/window.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -104,7 +104,7 @@ p {
 
 .btn {
     width: 120px;
-    cursor: url("/img/cursor-pointer.png"), pointer;
+    cursor: url("img/cursor-pointer.png"), pointer;
     user-select: none;
 }
 
