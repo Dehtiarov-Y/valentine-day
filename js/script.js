@@ -46,7 +46,7 @@ noBtn.addEventListener("mouseover", () => {
     const moveY = Math.sin(angle) * distance;
 
     noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px) scale(0.75)`;
 
     // 2. ВЫЗЫВАЕМ ФУНКЦИЮ ПОКАЗА КАРТИНКИ
     spawnRandomImage();
