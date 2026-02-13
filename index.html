@@ -1,42 +1,111 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Valentine Letter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />    
-    <link rel="stylesheet" href="style/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet"/>
-    <link rel="shortcut icon" href="img/envelope.png" type="image/x-icon">
-  </head>
-  <body>
-    <!-- Envelope Screen -->
-    <div id="envelope-container">
-      <img src="img/envelope.png" alt="Envelope" id="envelope" />
-      <p>🧸ྀི Letter for You 🧸ྀི</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentine Letter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap"
+    rel="stylesheet" />
+  <link rel="shortcut icon" href="img/envelope.png" type="image/x-icon">
+</head>
+
+<body>
+  <div id="intro-screen">
+    <div class="intro-content">
+      <p class="romantic-text">
+        Clique sur le bouton pour remplir ce site de couleurs,
+        à l'image de ma vie depuis que je t'ai rencontrée, my love ʕ•͡-•ʔ
+      </p>
+
+      <p class="sound-hint"><strong>ET MONTE LE SON LULUICHKA !! <br>HEHEHE</strong></p>
+
+      <button id="start-btn">Continuer</button>
     </div>
+  </div>
 
-    <!-- Letter Screen -->
-    <div id="letter-container">
-      <div class="letter-window">
-        <h1 id="letter-title">Will you be my Valentine?</h1>
+  <audio id="bg-music" loop>
+    <source src="music/LA_LA_LAND_-_Mia_and_Seb_s_Theme_(mp3.pm).mp3" type="audio/mpeg">
+  </audio>
 
-        <img src="img/cat_dance.gif" class="cat" id="letter-cat" />
+  <div id="envelope-container">
+    <img src="img/main-page-1.gif" class="deco-img deco-1" alt="decoration">
+    <img src="img/main-page-2.gif" class="deco-img deco-2" alt="decoration">
+    <img src="img/main-page-3.gif" class="deco-img deco-3" alt="decoration">
+    <img src="img/main-page-4.gif" class="deco-img deco-4" alt="decoration">
 
-        <div class="buttons" id="letter-buttons">
-          <img src="img/yes.png" class="btn yes-btn" alt="Yes" style="transform: scale(0.75);"/>
+    <img src="img/envelope.png" alt="Envelope" id="envelope" />
+    <p>ᢉ𐭩 Une lettre pour love of my <strong>ALL LIFE</strong> ᢉ𐭩</p>
+  </div>
 
-          <div class="no-wrapper">
-            <img src="img/no.png" class="btn no-btn" alt="No" style="transform: scale(0.75);"/>
-          </div>
+  <div id="letter-container">
+    <div class="letter-window">
+      <h1 id="letter-title">Will you be my Valentine?</h1>
+
+      <img src="img/be-valentine.gif" class="cat" id="letter-cat" />
+
+      <div class="buttons" id="letter-buttons">
+        <img src="img/yes.png" class="btn yes-btn" alt="Yes" />
+
+        <div class="no-wrapper">
+          <img src="img/no.png" class="btn no-btn" alt="No" />
         </div>
-
-        <p id="final-text" class="final-text" style="display: none">
-          <strong>Meow meow meow</strong> <br> Our lovely date in Ikea my loove hehe 🌚(time what you want) (dress as you want) <strong>but the mood needs to be perfect mv !!</strong>
-        </p>
       </div>
+
+      <p id="final-text" class="final-text" style="display: none">
+        <strong>Meow meow meow</strong> <br> Our lovely date in Ikea my loove hehe 🌚(time what you want) (dress as you
+        want) <strong>but the mood needs to be perfect mv !!</strong>
+      </p>
+
+      <button id="plan-btn" class="hidden">Voir le programme </button>
+      
     </div>
-    <script src="js/script.js"></script>
-  </body>
+  </div>
+
+  <div id="plan-screen" class="hidden">
+    <div class="plan-card">
+      <span class="close-plan">&times;</span>
+      <h2>Notre Programme 💖</h2>
+      <ul>
+        <li>
+          <strong>Morning</strong>
+          <p>On profite du matin et l'un de l'autre</p>
+        </li>
+        <li>
+          <strong>Déjeuner</strong>
+          <p>Un bon repas pour prendre des forces avant le combat 🌚🌝</p>
+        </li>
+        <li>
+          <strong>🏠 Mission IKEA : "Notre Future Maison"</strong>
+          <p>On choisit notre cuisine, le salon, les accessoires... <br>
+            <b>Challenge :</b> Chacun choisit un objet pour notre maison, symbole de notre première
+            Saint-Valentin.<br>
+            ✨ <b>Bonus :</b> Photos drôles dans les intérieurs !</p>
+        </li>
+        <li>
+          <strong>🎞️ Photomaton</strong>
+          <p>4 photos obligatoires :<br>
+            1️⃣ Normale<br>
+            2️⃣ Drôle<br>
+            3️⃣ Sérieuse (Mode Mannequin)<br>
+            4️⃣ Gênante (Cringe)</p>
+        </li>
+        <li>
+          <strong>🚶 Petite promenade & Retour</strong>
+          <p>On just rentre à la maison</p>
+        </li>
+        <li>
+          <strong>👨‍🍳 Dîner & Soirée</strong>
+          <p>Je cuisine pour toi. Ensuite films, séries... ou peut-être pas que ça 🫣<br>
+            À nous de décider meow meow meow MAUW</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

@@ -5,43 +5,103 @@ body {
     justify-content: center;
     align-items: center;
     background-image: url("../img/heart-bg.jpg");
+    /* Исправлен путь, обычно из папки style нужно выйти на уровень вверх ../ */
     font-family: "Pixelify Sans", sans-serif;
     cursor: url("../img/cursor-normal.png"), pointer;
+    overflow: hidden;
+    /* Добавлено чтобы не появлялись полосы прокрутки */
 }
 
 /* Envelope Screen */
 #envelope-container {
     text-align: center;
     cursor: url("../img/cursor-pointer.png"), pointer;
-
+    position: relative;
+    /* Важно для позиционирования декоративных гифок */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+/* НОВЫЕ СТИЛИ ДЛЯ ДЕКОРАТИВНЫХ ГИФОК НА ГЛАВНОЙ */
+.deco-img {
+    position: absolute;
+    width: 150px;
+    /* Можешь уменьшить или увеличить размер */
+    height: auto;
+    pointer-events: none;
+    /* Чтобы они не мешали кликать на конверт */
+    opacity: 0.8;
+}
+
+.deco-1 {
+    top: 10%;
+    left: 15%;
+    transform: rotate(-15deg);
+}
+
+.deco-2 {
+    top: 15%;
+    right: 15%;
+    transform: rotate(10deg);
+}
+
+.deco-3 {
+    bottom: 10%;
+    left: 75%;
+    transform: translateX(-50%) rotate(5deg);
+    /* Центрируем по низу */
+}
+
+.deco-4 {
+    top: 75%;
+    left: 15%;
+    transform: rotate(-15deg);
+}
+
+/* --- Конец новых стилей --- */
+
 
 @keyframes pulse {
     0% {
-        transform:scale(1);
+        transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
+
     100% {
         transform: scale(1);
     }
 }
 
-#envelope{
+#envelope {
     width: 200px;
     animation: pulse 1.5s infinite;
+    position: relative;
+    z-index: 2;
+    /* Чтобы конверт был над декором */
 }
 
-#letter-container{
+#envelope-container p {
+    position: relative;
+    z-index: 2;
+}
+
+#letter-container {
     display: none;
-    position:fixed;
+    position: fixed;
     inset: 0;
     justify-content: center;
     align-items: center;
+    z-index: 10;
 }
 
-.letter-window{
+.letter-window {
     width: 90vw;
     max-width: 800px;
     aspect-ratio: 3/2;
@@ -71,7 +131,7 @@ body {
 
 h1 {
     font-size: 30px;
-    margin:0;
+    margin: 0;
 }
 
 p {
@@ -94,26 +154,36 @@ p {
 .buttons {
     display: flex;
     justify-content: center;
+    /* Добавляем выравнивание по центру, чтобы кнопки не растягивались */
+    align-items: center;
     gap: 30px;
     position: relative;
+    width: 100%;
+    /* Высоту можно убрать, чтобы контейнер подстроился под размер кнопок */
+    /* height: 100px;  <-- Эту строку лучше закомментировать или удалить */
+    padding: 20px 0;
+    /* Добавим немного воздуха сверху и снизу */
 }
 
-.no-wrapper{
-    position:relative;
+.no-wrapper {
+    position: relative;
+    /* Добавляем flex, чтобы wrapper не схлопывался */
+    display: flex;
+    align-items: center;
 }
 
 .btn {
     width: 120px;
+    /* Важно: height: auto чтобы сохранить пропорции картинки */
+    height: auto;
     cursor: url("../img/cursor-pointer.png"), pointer;
     user-select: none;
+    /* Убираем inline-block, так как они внутри flex контейнера */
+    display: block;
 }
 
-.yes-btn,
-.no-btn {
-width: 120px;
-height: auto;
-display: inline-block;
-}
+/* Убираем дублирующие стили ширины и высоты */
+/* .yes-btn, .no-btn { ... } <-- этот блок можно удалить */
 
 .yes-btn {
     position: relative;
@@ -123,34 +193,284 @@ display: inline-block;
 }
 
 .no-btn {
-    z-index: 1;
+    z-index: 100;
+    /* ВЕРНУЛИ RELATIVE: Теперь она изначально стоит ровно */
     position: relative;
-    transition: transform 0.15s ease;
+    /* Убрали left и top, они не нужны для relative */
+    transition: all 0.3s ease;
     cursor: default;
 }
 
-.final-text{
+.final-text {
     font-size: 22px;
     line-height: 1.4;
     text-align: center;
     display: inline-block;
     padding: 10px 20px;
-    background-color: rgba(255,240,240,0.5);
+    background-color: rgba(255, 240, 240, 0.5);
     border-radius: 12px;
 }
 
 .floating-img {
-    position: fixed; 
-    width: 150px;   
+    position: fixed;
+    width: 150px;
     height: auto;
-    z-index: 100;    
-    pointer-events: none; 
-    animation: popIn 0.3s ease-out; 
+    z-index: 100;
+    pointer-events: none;
+    animation: popIn 0.3s ease-out;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* --- Configuration des couleurs (MODIFIEZ ICI POUR VOTRE SITE) --- */
+:root {
+    --overlay-bg: #ffe6ea;
+    /* Couleur de fond de l'écran d'accueil (ex: rose pâle) */
+    --text-color: #d63384;
+    /* Couleur du texte (ex: rose foncé) */
+    --btn-bg: #ff4d6d;
+    /* Couleur du bouton */
+    --btn-text: #ffffff;
+    /* Couleur texte bouton */
+    --heart-color: #ff0000;
+    /* Couleur des cœurs du curseur */
+}
+
+/* --- Стили стартового экрана --- */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    /* Черный фон */
+    color: #ffffff;
+    /* Белый текст */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s;
+    font-family: inherit;
+    /* Шрифт как на сайте */
+}
+
+#intro-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-content {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+}
+
+.romantic-text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    /* Отступ снизу */
+    font-style: italic;
+    animation: none !important; 
+}
+
+/* Стиль для надписи про звук */
+.sound-hint {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;      /* Сделал чуть ярче */
+    color: #ff4d6d;    /* Можно добавить цвет, чтобы выделялось без мигания */
+    font-weight: bold;
+    text-align: center;
+    animation: none; 
+}
+
+#start-btn {
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    cursor: url("../img/cursor-pointer.png"), pointer;
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Style des cœurs du curseur --- */
+.cursor-heart {
+    position: absolute;
+    pointer-events: none;
+    /* Important pour cliquer à travers */
+    color: var(--heart-color);
+    font-size: 20px;
+    /* Taille du cœur */
+    user-select: none;
+    transform: translate(-50%, -50%);
+    /* Centrage */
+    z-index: 20000;
+    animation: floatAndFade 1s ease-out forwards;
+}
+
+/* Animation : le cœur monte et disparaît */
+@keyframes floatAndFade {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -150%) scale(1.5);
+        /* Monte et grandit légèrement */
+        opacity: 0;
+    }
+}
+
+/* --- Кнопка "Посмотреть план" --- */
+#plan-btn {
+    margin-top: 25px;
+    /* Отступ сверху от текста */
+    margin-bottom: 10px;
+    /* Отступ снизу */
+    padding: 10px 30px;
+    background-color: #D76159;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.3s ease;
+
+    /* Центрирование */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: url("../img/cursor-pointer.png"), pointer;
+}
+
+#plan-btn:hover {
+    transform: scale(1.1);
+    background-color: #a44b44;
+}
+
+/* Скрываем кнопку, пока не нажали YES */
+#plan-btn.hidden {
+    display: none;
+}
+
+/* --- Окно с планом (Модальное окно) --- */
+#plan-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Затемнение фона */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 30000;
+    /* Поверх всего */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+#plan-screen.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Карточка плана */
+.plan-card {
+    background: #fff0f3;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    /* Прокрутка, если текста много */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: left;
+    font-family: inherit;
+    border: 2px solid #ffcfcb;
+}
+
+.plan-card h2 {
+    text-align: center;
+    color: #D76159;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.plan-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plan-card li {
+    margin-bottom: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.plan-card strong {
+    color: #D76159;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.plan-card p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+    animation: none !important; 
+}
+
+/* Крестик закрытия */
+.close-plan {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+    cursor: url("../img/cursor-pointer.png"), pointer;
+}
+
+.close-plan:hover {
+    color: #ff4d6d;
 }
