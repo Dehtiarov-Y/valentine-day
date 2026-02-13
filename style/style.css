@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("/img/heart-bg.jpg");
+    background-image: url("img/heart-bg.jpg");
     font-family: "Pixelify Sans", sans-serif;
     cursor: url("/img/cursor-normal.png"), pointer;
 }
